@@ -1,0 +1,64 @@
+대댓글 처리
+어떤 댓글(parents)의 대댓글인지 정의하는 게 첫 번째
+테이블에 parent or gno 컬럼을 추가
+parent는 원댓글의 rno
+
+재귀(a 함수 내에서 다른 함수를 실행)형으로 설계하면 계단형식이 됨
+
+where tno='t1'
+order by gno asc
+- tno와 gno가 index의 기준이 되어아 함 (복합 인덱스 - 2개 이상의 컬럼)
+
+<insert id="insert">
+insert into tbl_todo (title, content, writer, dueDate)
+values (#{title}, #{content}, #{writer}, #{dueDate})
+
+<selectKey resultType="long" keyProperty="tno" order="AFTER">
+select last_insert_id()
+</selectKey>
+</insert>
+
+어려운 과제
+
+1. 서버에서 count를 계산해서 마지막 페이지를 보여준다.
+- 댓글이 많은 방식
+2. 화면에서 계산한다. (서버를 두번 호출한다)
+- 일반적으로 사용하는 방식 (목록, count) page수가 넘어가면 option을 줘서 서버와 다시 한번 통신
+
+중요데이타 (병원 환자 데이터베이스 보과ㅏㄴ
+일반적인건 파일?????????)
+옛날엔 쌍욕..구타.....라떼는.............
+남자는 지금ㅇㄴ..........ㅇ.ㅓ...
+투두 댓글 숫자 업데이트 그 기능은 투두에 정리해
+서비스 하나에 매퍼가 여러개,,,,,,,,,,,
+항상  만드러
+
+SpringBoot는 단독으로 실행 가능한 Application이다.
+
+jar와 war의 차이점
+- was에 올릴 프로젝트가 war 프로젝트
+
+
+
+어노텐션 메솓으ㅔ 거는게 젤 세다 일짱
+
+Spring APOP
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,20 @@
+git 명령어
+
+- git 올릴 때 작업
+- 파일을 commit 할 수 있는 상태로 올려놓기
+git add .
+
+- 파일이 add 되었는지 확인
+git status
+
+- 깃에 commit
+git commit -m 'git커밋 메세지'
+
+- commit한 파일을 push
+git push origin main
+git push origin(remote 이름) main(branch 이름)
+
+
+- git 올리기 전에 하는 pull
+git pull origin main
+git pull origin(remote 이름) main(branch 이름)

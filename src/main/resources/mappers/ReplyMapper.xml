@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.zerock.todo.mappers.ReplyMapper">
+
+    <insert id="insert">
+    insert into tbl_reply2 (tno, reply, replyer)
+    values (#{tno}, #{reply}, #{replyer})
+
+        <selectKey resultType="long" keyProperty="rno" order="AFTER">
+            select last_insert_id()
+        </selectKey>
+    </insert>
+
+    <update id="updateGno">
+    update tbl_reply2 set gno = #{rno} where rno = #{rno}
+    </update>
+
+    <insert id="insertChild">
+    insert into tbl_reply2 (tno, reply, replyer, gno)
+    values (#{tno}, #{reply}, #{replyer}, #{gno})
+
+    <selectKey resultType="long" keyProperty="rno" order="AFTER">
+            select last_insert_id()
+        </selectKey>
+        
+    </insert>
+
+    <select id="selectList" resultType="org.zerock.todo.dto.ReplyDTO">
+    select
+        if(rno = gno, 0, 1) as step, rno, tno, gno, reply, replyer, replydate
+    from tbl_reply2 
+    where tno = #{tno} order by gno asc, rno asc
+    limit #{pr.skip}, #{pr.size}
+    </select>
+
+    <select id="selectOne" resultType="org.zerock.todo.dto.ReplyDTO">
+    select * from tbl_reply2 where rno = #{rno}
+    </select>
+
+</mapper>

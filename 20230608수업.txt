@@ -1,0 +1,37 @@
+b3 - bj2 합치기
+git에 올리기
+
+https://getbootstrap.com/docs/4.0/getting-started/introduction/
+버전 주의(4.0버전)
+
+<jQuery>
+<bootstrap.js>
+<script> -> 순서
+
+addFlashAttribute -> session의 원리
+
+modal: jQuery를 이용하는 방식(4.0버전만 가능), 이용 안 하는 방식 두 가지
+- jQuery를 쓸 때: 제이쿼리를 최대한 적게 호출하는 게 좋음 -> 제이쿼리가 무거워서 성능 저하
+
+레이아웃- 구조
+템플릿- 틀
+
+@SuperBuilder: 상속 관계의 클래스도 사용 가능
+
+
+limit 100 => 100개
+limit 10, 20 => skip, 가져오는 갯수
+-> 식x 값만 들어올 수 있음
+
+타임리프 라이브러리 추가
+resources > static, templates 폴더 추가
+타임리프가 작동 되는지 먼저 확인 > 컨트롤러를 만들어서
+
+settings > collaborators > add people 계정 추가
+settings > collaborators > add people 계정 추가
+settings > collaborators > add people 계정 추가
+settings > collaborators > add people 계정 추가
+settings > collaborators > add people 계정 추가
+settings > collaborators > add people 계정 추가
+
+

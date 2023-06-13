@@ -1,0 +1,21 @@
+★주인공01 ㅂr꼈ㄷr..☆
+다 되면 이거 하기
+
+흐름은 하난데 호출은 서너 개~~~
+
+=> callback
+
+-> callback 지옥 발생 -> 해결하기 위해 Promise
+
+doA() => 일반적으로는 결과물 나옴 / Promise는 약속어음만 발행(결과X)-> doA().then( => ).~~
+
+Axios -> 기본이 json, Promise / node.js나 브라우저의 차이가 없음
+
+
+
+REST API는 표준이 아님
+
+
+/2 ??? ?? ????
+
+커밋 테스트

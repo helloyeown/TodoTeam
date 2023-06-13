@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout1.html}">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        <h1>Read</h1>
+        <ul class="postsDiv"></ul>
+
+        <div class="registForm">
+            <input type="text" class="registTitle" name="title">
+            <input type="text" class="registAuthor" name="author">
+            <button class="registBtn">regist</button>
+        </div>
+
+        <div class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" class="modalTitle" name="title">
+                    <input type="text" class="modalAuthor" name="author">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger btnDelete">DELETE</button>
+                    <button type="button" class="btn btn-primary btnModify">MODIFY</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="/js/axios.js"></script>
+
+    </div>
+
+    <script layout:fragment="script" th:inline="javascript">
+        const postsDiv = document.querySelector(".postsDiv")
+        // 댓글 처리
+        const path = "http://192.168.0.28:9090/posts"
+        const modalDiv = $(".modal")
+
+        postsDiv.addEventListener("click", e => {
+
+            e.preventDefault()
+            e.stopPropagation()
+
+            const target = e.target
+
+            console.log(target)
+
+            const pid = target.getAttribute("data-id")
+
+            console.log(pid)
+
+            getPostsOne(pid).then(post => {
+                console.log(post)
+                const {id, title, author} = post
+                //modal의 내용물을 변경
+                document.querySelector(".modal-title").innerHTML = id
+                document.querySelector(".modalTitle").value = title
+                document.querySelector(".modalAuthor").value = author
+                modalDiv.modal('show')
+            })
+
+        }, false)
+
+        document.querySelector(".btnDelete").addEventListener("click", e => {
+            
+            const id = document.querySelector(".modal-title").innerHTML
+            deletePostOne(id).then(result => {
+                console.log(result)
+                modalDiv.modal('hide')
+                getDataDefault()
+            })
+
+        }, false)
+
+        document.querySelector(".registBtn").addEventListener("click", e => {
+               
+            const regTitle = document.querySelector(".registTitle").value
+            const regAuthor = document.querySelector(".registAuthor").value
+
+            const temp = {title: regTitle, author: regAuthor}
+
+            postOne(temp).then(result => {
+                console.log(result)
+                document.querySelector(".registTitle").value = ''
+                document.querySelector(".registAuthor").value = ''
+                getDataDefault()
+            })
+        }, false)
+
+        document.querySelector(".btnModify").addEventListener("click", e => {
+
+            const modTitle = document.querySelector(".modalTitle").value
+            const modAuthor = document.querySelector(".modalAuthor").value
+            const mid = document.querySelector(".modal-title").innerHTML
+            const temp = {id: mid, title: modTitle, author: modAuthor}
+            //console.log(mid, temp)
+
+            putPostOne(temp).then(result => {
+                console.log(result)
+                modalDiv.modal('hide')
+                getDataDefault()
+            })
+        }, false)
+
+        getDataDefault()
+
+        // console.log(getPosts())     // promise 반환
+
+        // axios.get(path) // server 컴퓨터의 JSON 데이터를 가져옴
+        // .then(res => {
+        //     console.log(res.data)
+        // })
+        // .catch(ex => {
+
+        // })
+        //  테스트
+    </script>
+</body>
+</html>

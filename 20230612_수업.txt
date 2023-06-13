@@ -1,0 +1,55 @@
+20230612
+Node.js -> JS 엔진 -> JS언어 서버사이드 / 비동기처리 / chrome 엔진에서 v8만 뜯어옴
+=> npm install 사용
+axios 추가 터미널 -> npm install axios ->package.json axios추가 확인
+
+★ajax CORS : 동일 출처 정책
+
+await(비동기 -> 동기화)가 사용되면 async 타입의 모든 return 값은 promise...☆
+
+# js 는 1급 객체다,,, => 파라미터, 리턴 타입이 함수가 될 수 있음
+람다식^_^다람쥐다식~~~
+ex) getPosts().then(arr => {
+let str = "" // 문자열 만들기
+console.log(arr)
+for(lget i = 0; i < arr.length; i++) {
+const {id, title, author} = arr[i]
+str += `<li data-id=${id}>${title}</li>`
+}
+console.log(str)
+})
+
+HTML은 ConnectionPoolXXXXXXX
+
+1. id 파악 2. 서버 통신 3. Modal 창 채움 4. Modal에 보여주기
+- 수정은 항상 맨 마지막에 해야 함 *
+- axios 통신하는 친구들은 따로 빼주는 게 좋음 *
+==================================================
+<브라우저의 동작 원리>
+HTML -> (구조화된)문자열 -> DOM처리(*DOM Tree 구성 : HTML이랑 1대1) -> [CSS 엔진 -> Render Tree 생성]
+HTML엔 있지만 화면엔 없음 => Modal CSS엔 없음 but DOM엔 있어용
+★★★ DOM 존재 -> 이벤트 처리 가능 btn에 data-가 있다면 이벤트가 발생한 친구한테 바로 id 값을 알 수 있음★★★
+
+✧*｡٩(ˊᗜˋ*)و✧*｡
+
+목록: 조인처리 vs 반정규화
+조회: 댓글 페이징 처리
+
+cascade: 폭포, 순차적으로 내려가면서 필요한 항목을 삭제
+
+인덱스 만들기
+create index idx_reply on tbl_reply (tno desc, rno asc);
+
+join은 더하기가 아닌 곱하기
+
+그룹함수: max, min, count
+
+반정규화: 연산을 미리 해놓음 -> 조인과 연산이 많아지면 성능이 떨어지는데 이를 해결
+반정규화를 만들면 트랜잭션을 염두에 두어야 한다.
+그래서 Service Interface에 @Transactional를 넣어준다
+
+잊을 수 없는 트랜잭션 이야기
+All or Nothing
+되면 다 되어야 하고 안되면 아무것도 안되어야 한다.
+댓글도 추가되고 replycnt가 업데이트 되는게 All
+댓글이 추가가 안되는게 Nothing
